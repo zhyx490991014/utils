@@ -1,2 +1,1 @@
-# EECHSS
-增强型ECH安全系统
+YOLO detect训练用到的一些东西
