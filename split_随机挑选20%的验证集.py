@@ -14,13 +14,13 @@ def split_img(img_path, label_path, split_list):
         Data = '.'
         # os.mkdir(Data)
 
-        train_img_dir = Data + '/images/train'
-        val_img_dir = Data + '/images/val'
-        # test_img_dir = Data + '/images/test'
+        train_img_dir = Data + '/train/images'
+        val_img_dir = Data + '/val/images'
+        # test_img_dir = Data + '/test/images'
 
-        train_label_dir = Data + '/labels/train'
-        val_label_dir = Data + '/labels/val'
-        # test_label_dir = Data + '/labels/test'
+        train_label_dir = Data + '/train/labels'
+        val_label_dir = Data + '/val/labels'
+        # test_label_dir = Data + '/test/labels'
 
         # 创建文件夹
         os.makedirs(train_img_dir)
@@ -44,13 +44,15 @@ def split_img(img_path, label_path, split_list):
     train_label_copy = [os.path.join(train_label_dir, label.split('\\')[-1]) for label in train_label]
     for i in tqdm(range(len(train_img)), desc='train ', ncols=80, unit='img'):
         _copy(train_img[i], train_img_dir)
-        _copy(train_label[i], train_label_dir)
+        if os.path.exists(train_label[i]):
+            _copy(train_label[i], train_label_dir)
         all_img_path.remove(train_img[i])
     val_img = all_img_path
     val_label = [toLabelPath(img, label_path) for img in val_img]
     for i in tqdm(range(len(val_img)), desc='val ', ncols=80, unit='img'):
         _copy(val_img[i], val_img_dir)
-        _copy(val_label[i], val_label_dir)
+        if os.path.exists(val_label[i]):
+            _copy(val_label[i], val_label_dir)
 
 
 def _copy(from_path, to_path):
