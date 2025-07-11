@@ -14,13 +14,13 @@ def split_img(img_path, label_path, split_list):
         Data = '.'
         # os.mkdir(Data)
 
-        train_img_dir = Data + '/train/images'
-        val_img_dir = Data + '/val/images'
-        # test_img_dir = Data + '/test/images'
+        train_img_dir = Data + '/images/train'
+        val_img_dir = Data + '/images/val'
+        # test_img_dir = Data + '/images/test'
 
-        train_label_dir = Data + '/train/labels'
-        val_label_dir = Data + '/val/labels'
-        # test_label_dir = Data + '/test/labels'
+        train_label_dir = Data + '/labels/train'
+        val_label_dir = Data + '/labels/val'
+        # test_label_dir = Data + '/labels/test'
 
         # 创建文件夹
         os.makedirs(train_img_dir)
